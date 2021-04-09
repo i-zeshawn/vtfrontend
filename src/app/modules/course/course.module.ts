@@ -22,8 +22,7 @@ const routes=[
         path:'dashboard/courses',
         canActivate:[AuthGuard],
         component:CourseComponent
-
-    }
+    },
 ]
 @NgModule({
   declarations: [CourseComponent, AddCourseComponent, EnrolledStudentsComponent],
