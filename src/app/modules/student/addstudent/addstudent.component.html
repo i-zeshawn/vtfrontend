@@ -2,9 +2,6 @@
     <span>{{studentService.addStudentForm.controls['id'].value ? "Update Student" : "New Student"}}</span>
 </mat-toolbar>
 <form (submit)="addStudent()" [formGroup]="studentService.addStudentForm" class="normal-form">
-    <button (click)="close()" mat-icon-button>
-        <mat-icon>close</mat-icon>
-    </button>
 
     <mat-grid-list cols="2" rowHeight="300px">
         <mat-grid-tile>
