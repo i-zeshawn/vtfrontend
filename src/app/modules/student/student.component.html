@@ -1,7 +1,13 @@
-<div class="page-layout simple fullwidth docs" style="padding: 10px">
-    <button (click)="create()" mat-raised-button>
+<div class="page-layout simple fullwidth docs" style="padding: 10px"  style="background: #abbaab;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #ffffff, #abbaab);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #ffffff, #abbaab);">
+
+    <img mat-card-image src="../../../assets/images/backgrounds/Student.jpg" style="height: 20%"
+         alt="Photo cover for students">
+
+    <button (click)="create()" mat-raised-button  color="accent">
         <mat-icon>add</mat-icon>
-        Create
+        Add Student
     </button>
     <mat-form-field class="search-form-field">
         <mat-label>Filter</mat-label>
@@ -53,19 +59,10 @@
 
                 <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
                 <mat-cell *matCellDef="let row">
-                    <button (click)="onEdit(row)" mat-icon-button>
-                        <mat-icon title="view details of student">launch</mat-icon>
-                    </button>
-                    <button (click)="onDelete(row)" color="warn" mat-icon-button>
-                        <mat-icon title="delete student">delete_outline</mat-icon>
-                    </button>
                     <button (click)="openEnrolDialog(row)" *ngIf="row.is_enrolled==null" mat-icon-button>
-                        <mat-icon title="enroll student">add</mat-icon>
+                        <mat-icon title="add student">add</mat-icon>
                     </button>
 
-                    <button *ngIf="row.is_enrolled!=null" mat-icon-button>
-                        <mat-icon title="student enrolled">check</mat-icon>
-                    </button>
                 </mat-cell>
             </ng-container>
             <!--            <ng-container matColumnDef="loading">-->

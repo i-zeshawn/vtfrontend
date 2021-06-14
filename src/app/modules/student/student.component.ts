@@ -47,7 +47,7 @@ export class StudentComponent implements OnInit {
     }
 
     getStudents() {
-        this.studentService.getAllStudents().subscribe((data: []) => {
+        this.studentService.getCompleteListOfudents().subscribe((data: []) => {
                 this.dataSource.data = data; // on data receive populate dataSource.data array
                 this.dataSource.paginator = this.paginator;
                 this.dataSource.sort = this.sort;
@@ -103,19 +103,30 @@ export class StudentComponent implements OnInit {
     }
 
     openEnrolDialog(row) {
-        var studentService = this.studentService.courseForm.patchValue({
-            student_id: row.id,
-        });
-        const dialogConfig = new MatDialogConfig();
-        dialogConfig.disableClose = true;
-        dialogConfig.autoFocus = true;
-        dialogConfig.width = '60%';
-        let dialoagRef = this.dialog.open(EnrollStudentComponent, dialogConfig);
-        dialoagRef.afterClosed().subscribe((confirmed: boolean) => {
-            if (confirmed) {
-                this.getStudents();
+        this.studentService.addStudentToTeacher(row.id).subscribe((data)=>{
+            if (data.error==false)
+            {
+                this.toaster.success(data.message,"Success");
+            }
+            else
+            {
+                this.toaster.error(data.message,"Success");
+
             }
         });
+        // var studentService = this.studentService.courseForm.patchValue({
+        //     student_id: row.id,
+        // });
+        // const dialogConfig = new MatDialogConfig();
+        // dialogConfig.disableClose = true;
+        // dialogConfig.autoFocus = true;
+        // dialogConfig.width = '60%';
+        // let dialoagRef = this.dialog.open(EnrollStudentComponent, dialogConfig);
+        // dialoagRef.afterClosed().subscribe((confirmed: boolean) => {
+        //     if (confirmed) {
+        //         this.getStudents();
+        //     }
+        // });
     }
 }
 
